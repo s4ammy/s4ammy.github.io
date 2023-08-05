@@ -13,11 +13,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "latest"
-        
-      - name: Build and Run Hugo site
+      - name: Run Hugo server
         run: hugo server --source themes/terminal/exampleSite --buildDrafts --buildFuture
-        
