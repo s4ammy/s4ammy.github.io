@@ -25,8 +25,6 @@ jobs:
         run: hugo -t terminal/exampleSite
 
       - name: Deploy
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         run: |
           echo "Personal Token: $PERSONAL_TOKEN"
           ls -l ./public
@@ -36,3 +34,6 @@ jobs:
             external_repository: s4ammy/samanthaa.github.io
             publish_branch: main
             publish_dir: ./public
+        shell: bash
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
