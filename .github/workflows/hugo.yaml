@@ -1,4 +1,4 @@
-name: Build and Run Hugo Site
+name: Build and Deploy Hugo Site
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +18,12 @@ jobs:
         with:
           hugo-version: "latest"
 
-      - name: Run Hugo server
-        run: hugo server --source themes/terminal/exampleSite
+      - name: Build Hugo site
+        run: hugo --source themes/terminal/exampleSite
+        working-directory: themes/terminal/exampleSite
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./themes/terminal/exampleSite/public
