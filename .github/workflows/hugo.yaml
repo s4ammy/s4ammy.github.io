@@ -25,9 +25,14 @@ jobs:
         run: hugo -t terminal/exampleSite
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
         env:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          external_repository: s4ammy/samanthaa.github.io
-          publish_branch: main
-          publish_dir: ./public
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: |
+          echo "Personal Token: $PERSONAL_TOKEN"
+          ls -l ./public
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            personal_token: ${{ secrets.PERSONAL_TOKEN }}
+            external_repository: s4ammy/samanthaa.github.io
+            publish_branch: main
+            publish_dir: ./public
