@@ -19,7 +19,7 @@ jobs:
           hugo-version: "latest"
 
       - name: Run Hugo server
-        run: hugo --source -t terminal/exampleSite
+        run: hugo --source themes/terminal/exampleSite -t terminal
         working-directory: themes/terminal/exampleSite
 
       - name: Deploy to GitHub Pages
