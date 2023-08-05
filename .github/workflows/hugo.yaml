@@ -19,4 +19,6 @@ jobs:
           hugo-version: "latest"
         
       - name: Run Hugo server
+        env:
+          HUGO_THEME: terminal
         run: hugo server --source themes/terminal/exampleSite --buildDrafts --buildFuture
