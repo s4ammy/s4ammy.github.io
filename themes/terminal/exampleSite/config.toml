@@ -1,6 +1,5 @@
 baseurl = "https://samanthaa.github.io/"
 languageCode = "en-us"
-theme = "../../.."
 paginate = 5
 
 [params]
