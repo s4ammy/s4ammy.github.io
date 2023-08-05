@@ -19,10 +19,10 @@ jobs:
           hugo-version: "latest"
         
       - name: Build site
-        run: hugo --source ./terminal/exampleSite  # Update this path
+        run: hugo --source ./themes/terminal/exampleSite  # Update this path
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./terminal/exampleSite/public
+          publish_dir: ./themes/terminal/exampleSite/public
