@@ -20,3 +20,4 @@ jobs:
 
       - name: Run Hugo server
         run: hugo server -t terminal/exampleSite
+        working-directory: themes/terminal/exampleSite
