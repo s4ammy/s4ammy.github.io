@@ -19,5 +19,5 @@ jobs:
           hugo-version: "latest"
         
       - name: Run Hugo server
-        run: ./hugo server -t terminal/exampleSite
+        run: hugo server -t terminal/exampleSite
         working-directory: themes/terminal/exampleSite
