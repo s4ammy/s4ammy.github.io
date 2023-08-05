@@ -12,11 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+
       - name: Run Hugo server
-        run: |
-          wget https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_Linux-64bit.tar.gz
-          tar -zxvf hugo_extended_0.116.1_Linux-64bit.tar.gz
-          chmod +x hugo
-          ./hugo server -t terminal/exampleSite
+        run: hugo server -t terminal/exampleSite
         working-directory: themes/terminal/exampleSite
