@@ -1,4 +1,4 @@
-name: Build and Deploy Hugo Site
+name: Build and Run Hugo Site
 
 on:
   push:
@@ -18,11 +18,6 @@ jobs:
         with:
           hugo-version: "latest"
         
-      - name: Build site
-        run: hugo --source ./themes/terminal/exampleSite  # Update this path
+      - name: Build and Run Hugo site
+        run: hugo server --source themes/terminal/exampleSite --buildDrafts --buildFuture
         
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./themes/terminal/exampleSite/public
