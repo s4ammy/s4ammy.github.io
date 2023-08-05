@@ -19,7 +19,7 @@ jobs:
           hugo-version: "latest"
         
       - name: Build site
-        run: hugo --source terminal/exampleSite
+        run: hugo --source ./terminal/exampleSite  # Update this path
         
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
