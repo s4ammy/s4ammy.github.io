@@ -19,11 +19,4 @@ jobs:
           hugo-version: "latest"
 
       - name: Run Hugo server
-        run: hugo --source themes/terminal/exampleSite -t terminal
-        working-directory: themes/terminal/exampleSite
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # Use the correct path for the built site
+        run: hugo server -t terminal/exampleSite
