@@ -3,21 +3,20 @@ name: Build and Run Hugo Site
 on:
   push:
     branches:
-      - main  # Change this to your main branch name
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "latest"
-        
       - name: Run Hugo server
-        run: hugo server -t terminal/exampleSite
-        working-directory: themes
+        run: |
+          wget https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_Linux-64bit.tar.gz
+          tar -zxvf hugo_extended_0.116.1_Linux-64bit.tar.gz
+          chmod +x hugo
+          ./hugo server -t terminal/exampleSite
+        working-directory: themes/terminal/exampleSite
