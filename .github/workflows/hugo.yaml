@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
         
       - name: Run Hugo server
         run: hugo server --source themes/terminal/exampleSite --buildDrafts --buildFuture
