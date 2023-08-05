@@ -19,7 +19,8 @@ jobs:
           hugo-version: "latest"
 
       - name: Run Hugo server
-        run: hugo server -t terminal/exampleSite
+        run: hugo --source -t terminal/exampleSite
+        working-directory: themes/terminal/exampleSite
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
