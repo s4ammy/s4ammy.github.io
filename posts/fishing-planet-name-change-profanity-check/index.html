@@ -60,8 +60,6 @@
 <meta property="og:image:height" content="627">
 
 
-  <meta property="article:published_time" content="2023-08-05 00:00:00 &#43;0000 UTC" />
-
 
 
 
@@ -102,7 +100,7 @@
   <h1 class="post-title">
     <a href="/posts/fishing-planet-name-change-profanity-check/">Fishing Planet name change profanity check</a>
   </h1>
-  <div class="post-meta"><time class="post-date">2023-08-05</time><span class="post-author">Samanthaa</span></div>
+  <div class="post-meta"><span class="post-author">Samanthaa</span></div>
 
   
   
@@ -115,11 +113,9 @@
   
 
   <div class="post-content"><div>
-        <p>If we open <strong>GameAssembly.dll</strong> in IDA pro after running <a href="https://github.com/Perfare/Il2CppDumper">Link text Here</a> to generate <strong>ida_py3.py</strong> we can search the list of functions and end up finding a function called <strong>AbusiveWords::HasAbusiveWords</strong></p>
+        <p>If we open <strong>GameAssembly.dll</strong> in IDA pro after running <a href="https://github.com/Perfare/Il2CppDumper">Il2CppDumper</a> to generate <strong>ida_py3.py</strong> we can search the list of functions and end up finding a function called <strong>AbusiveWords::HasAbusiveWords</strong></p>
 <h1 id="function-dissassembly-sparing-the-functions-code-because-we-dont-care-about-it">Function dissassembly sparing the functions code because we don&rsquo;t care about it<a href="#function-dissassembly-sparing-the-functions-code-because-we-dont-care-about-it" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#66d9ef">__fastcall</span> <span style="color:#a6e22e">HasAbusiveWords</span>(<span style="color:#66d9ef">__int64</span> a1, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int8</span> a2, <span style="color:#66d9ef">__int64</span> a3, <span style="color:#66d9ef">__int64</span> a4)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#66d9ef">__fastcall</span> <span style="color:#a6e22e">HasAbusiveWords</span>(<span style="color:#66d9ef">__int64</span> a1, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int8</span> a2, <span style="color:#66d9ef">__int64</span> a3, <span style="color:#66d9ef">__int64</span> a4) { }
 </span></span></code></pre></div><h1 id="abusing-it-with-a-single-hook">Abusing it with a single hook<a href="#abusing-it-with-a-single-hook" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
 <p>Because this check is ran <strong>client-side</strong> and the server never confirms the name contains no profanity we can just create a signature to the function and hook it, then we just return 0, considering this game lacks an <code>Anti-cheat</code> we can use any hooking library we choose, for this example i went with <code>MinHook</code></p>
 <p><code>48 89 5C 24 10 48 89 6C 24 18 56 48 83 EC 20 80 3D ? ? ? ? ? 0F B6 EA 48 8B F1 75 37</code></p>
