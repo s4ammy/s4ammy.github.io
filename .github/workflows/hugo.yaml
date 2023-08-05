@@ -1,22 +1,31 @@
-name: Build and Run Hugo Site
+name: hugo CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          submodules: true 
+          fetch-depth: 1   
 
-      - name: Set up Hugo
+      - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "latest"
+          hugo-version: 'latest'
 
-      - name: Run Hugo server
-        run: hugo server -t terminal/exampleSite
+      - name: Build
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          external_repository: s4ammy/samanthaa.github.io
+          publish_branch: main
+          publish_dir: ./public
