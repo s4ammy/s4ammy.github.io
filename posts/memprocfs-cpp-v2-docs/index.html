@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>MemprocFs Documentation :: </title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MemprocFs c&#43;&#43; wrapper v2 documentation" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/memprocfs-cpp-v2-docs/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="img/theme-colors/pink.png">
+  <link rel="apple-touch-icon" href="img/theme-colors/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="Samanthaa" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="MemprocFs Documentation">
+<meta property="og:description" content="MemprocFs c&#43;&#43; wrapper v2 documentation" />
+<meta property="og:url" content="/posts/memprocfs-cpp-v2-docs/" />
+<meta property="og:site_name" content="" />
+
+  
+  
+  <meta property="og:image" content="">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container full headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="">
+  <div class="logo">
+    Samanthaa
+  </div>
+</a>
+
+    </div>
+    
+    
+  </div>
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/memprocfs-cpp-v2-docs/">MemprocFs Documentation</a>
+  </h1>
+  <div class="post-meta"><span class="post-author">Samanthaa</span></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="all-classes">All Classes<a href="#all-classes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong><a href="#c_device">c_device</a></strong><br>
+<strong><a href="#c_keyboard">c_keyboard</a></strong><br>
+<strong><a href="#c_registry">c_registry</a></strong><br>
+<strong><a href="#c_process">c_process</a></strong><br>
+<strong><a href="#c_module">c_module</a></strong><br>
+<strong><a href="#c_memory">c_memory</a></strong><br>
+<strong><a href="#example">example</a></strong></p>
+<h1 id="c_device">c_device<a href="#c_device" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong>Initialization</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>c_device(std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*&gt;</span> in_args) <span style="color:#f92672">:</span> o_args(in_args) {};
+</span></span></code></pre></div><p><strong>Fields</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> connected <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint64_t</span> id <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, major_version <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, minor_version <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><p><strong>Functions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		attmpts to initialize vmm with class initialized arguments
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">connect</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		closes the vmm handle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">disconnect</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a list of windows users
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>user_map_data_t<span style="color:#f92672">&gt;</span> get_users();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a list of services
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>PVMMDLL_MAP_SERVICEENTRY<span style="color:#f92672">&gt;</span> get_service_list();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		attempts to find a proecss using its name c_process:failed indiciates failure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	c_process <span style="color:#a6e22e">process_from_name</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		creates a c_process instance using a known process id
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	c_process <span style="color:#a6e22e">process_from_id</span>(<span style="color:#66d9ef">int</span> id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a list of process id&#39;s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>DWORD<span style="color:#f92672">&gt;</span> get_pid_list();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a list of process instances
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>c_process<span style="color:#f92672">&gt;</span> get_process_list();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns registry data found at a path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	c_registry <span style="color:#a6e22e">get_registry_data</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> path, e_registry_type type);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		creates a c_keyboard instance to get keyboard status from target machine
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	c_keyboard <span style="color:#a6e22e">get_keyboard</span>();
+</span></span></code></pre></div><p><strong>Related struct</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">user_map_data_t</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> future_use1[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> future_use2[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> va_reg_hive;
+</span></span><span style="display:flex;"><span>	LPSTR usz_text, usz_sid;
+</span></span><span style="display:flex;"><span>	LPWSTR wsz_text, wsz_sid;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="c_keyboard">c_keyboard<a href="#c_keyboard" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong>Functions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update_keys</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">key_down</span>(<span style="color:#66d9ef">uint8_t</span> virtual_key_code);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">key_was_down</span>(<span style="color:#66d9ef">uint8_t</span> virtual_key_code);
+</span></span></code></pre></div><h1 id="c_registry">c_registry<a href="#c_registry" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong>Initialization</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>c_registry(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> path, e_registry_type type);
+</span></span></code></pre></div><p><strong>Functions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">get_string</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_int</span>();
+</span></span></code></pre></div><p><strong>Related enums</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">e_registry_type</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	none <span style="color:#f92672">=</span> REG_NONE,
+</span></span><span style="display:flex;"><span>	sz <span style="color:#f92672">=</span> REG_SZ,
+</span></span><span style="display:flex;"><span>	expand_sz <span style="color:#f92672">=</span> REG_EXPAND_SZ,
+</span></span><span style="display:flex;"><span>	binary <span style="color:#f92672">=</span> REG_BINARY,
+</span></span><span style="display:flex;"><span>	dword <span style="color:#f92672">=</span> REG_DWORD,
+</span></span><span style="display:flex;"><span>	dword_little_endian <span style="color:#f92672">=</span> REG_DWORD_LITTLE_ENDIAN,
+</span></span><span style="display:flex;"><span>	dword_big_endian <span style="color:#f92672">=</span> REG_DWORD_BIG_ENDIAN,
+</span></span><span style="display:flex;"><span>	link <span style="color:#f92672">=</span> REG_LINK,
+</span></span><span style="display:flex;"><span>	multi_sz <span style="color:#f92672">=</span> REG_MULTI_SZ,
+</span></span><span style="display:flex;"><span>	resource_list <span style="color:#f92672">=</span> REG_RESOURCE_LIST,
+</span></span><span style="display:flex;"><span>	full_resource_descriptor <span style="color:#f92672">=</span> REG_FULL_RESOURCE_DESCRIPTOR,
+</span></span><span style="display:flex;"><span>	resource_requirements_list <span style="color:#f92672">=</span> REG_RESOURCE_REQUIREMENTS_LIST,
+</span></span><span style="display:flex;"><span>	qword <span style="color:#f92672">=</span> REG_QWORD,
+</span></span><span style="display:flex;"><span>	qword_little_endian <span style="color:#f92672">=</span> REG_QWORD_LITTLE_ENDIAN
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="c_process">c_process<a href="#c_process" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong>Initialization</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    c_process(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> in_name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    c_process(DWORD in_id);
+</span></span></code></pre></div><p><strong>Functions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		attmpts to find a module using it&#39;s name under a process
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	c_module <span style="color:#a6e22e">module_from_name</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> module_name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a list of modules
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>c_module<span style="color:#f92672">&gt;</span> get_module_list();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a c_memory instance initialized with the process id
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	c_memory <span style="color:#a6e22e">get_memory</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		attmpts to correct directory table base, see dtb_status_t for return types
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	dtb_status_t <span style="color:#a6e22e">fix_directory_table_base</span>();
+</span></span></code></pre></div><p><strong>Fields</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> failed <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DWORD process_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>VMMDLL_PROCESS_INFORMATION information{};
+</span></span></code></pre></div><p><strong>Related enums</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">dtb_status_t</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	failed <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>	success,
+</span></span><span style="display:flex;"><span>	fix_unnecessary,
+</span></span><span style="display:flex;"><span>	plugin_failed,
+</span></span><span style="display:flex;"><span>	list_filed,
+</span></span><span style="display:flex;"><span>	read_failed
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="c_module">c_module<a href="#c_module" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong>Initialization</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    c_module(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> mname, DWORD in_id, <span style="color:#66d9ef">bool</span> with_kernel_memory <span style="color:#f92672">=</span> false);
+</span></span></code></pre></div><p><strong>Functions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a vector of every section in the module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>section_data_t<span style="color:#f92672">&gt;</span> get_sections();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns the address of specified function in the module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint64_t</span> <span style="color:#a6e22e">get_function</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> function_name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		returns a list of functions in the module
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>function_data_t<span style="color:#f92672">&gt;</span> get_functions();
+</span></span></code></pre></div><p><strong>Fields</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> failed <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint64_t</span> base <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint32_t</span> size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> name <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span></code></pre></div><p><strong>Related enums</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">section_data_t</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint64_t</span> start, end;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> characteristics;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">function_data_t</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	LPSTR name;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint64_t</span> address;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="c_memory">c_memory<a href="#c_memory" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><strong>Initialization</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    c_memory(DWORD in_pid) <span style="color:#f92672">:</span> process_id(in_pid) {};
+</span></span></code></pre></div><p><strong>Functions</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		reads memory at specified address, amount of bytes to read is defined by the template typename
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	t read(<span style="color:#66d9ef">uint64_t</span> address, <span style="color:#66d9ef">uint64_t</span> flags <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">bool</span> with_kernel <span style="color:#f92672">=</span> false);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		read memory at a specified address to the buffer passed in the second argument, in_size is defaulted to 0 and will get the size it&#39;s self unless you specify otherwise
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> read_raw(<span style="color:#66d9ef">uint64_t</span> address, t buffer, <span style="color:#66d9ef">uint64_t</span> in_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">uint64_t</span> flags <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">bool</span> with_kernel <span style="color:#f92672">=</span> false);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		writes memory at a specified address, amount of bytes to write is defined by the template typename
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> write(<span style="color:#66d9ef">uint64_t</span> address, t data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		write memory at a specified address, amount of bytes to write is the size of the buffer provided
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> write_raw(<span style="color:#66d9ef">uint64_t</span> address, t buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		reads a chain of pointers as a type defined by the first template typename, the last value type is defined by the second template typename
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t1, <span style="color:#66d9ef">typename</span> t2<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	t1 read_chain(<span style="color:#66d9ef">uint64_t</span> address, std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">uint64_t</span><span style="color:#f92672">&gt;</span> offsets);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		searches for a signature of bytes from range_start to range_end, &#34;?&#34; is used as a wildcard
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint64_t</span> <span style="color:#a6e22e">find_signature</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> signature, <span style="color:#66d9ef">uint64_t</span> range_start, <span style="color:#66d9ef">uint64_t</span> range_end, <span style="color:#66d9ef">bool</span> caching <span style="color:#f92672">=</span> true);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		clear cached modules to avoid wasted memory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clear_cached_modules</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		initializes a scatter handle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">initialize_scatter</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		uninitializes our scatter handle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uninitialize_scatter</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		dispatches all reads/writes to the device
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">dispatch</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		dispatches all reads to the device and then loops our vector of scatter data to write the values we passed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">dispatch_read</span>(<span style="color:#66d9ef">bool</span> uninitialize <span style="color:#f92672">=</span> false);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> prepare_scatter(<span style="color:#66d9ef">uint64_t</span> address, t<span style="color:#f92672">*</span> buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* return type -&gt; template
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*  prepares a scatter at specified address
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*  second argument &#34;ret&#34; will be set as the return boolean
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*  returns default template on error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	t prepare_scatter(<span style="color:#66d9ef">uint64_t</span> address);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> read_scatter(<span style="color:#66d9ef">uint64_t</span> address, t<span style="color:#f92672">*</span> buffer, size_t size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	t read_scatter(<span style="color:#66d9ef">uint64_t</span> address);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">		prepares a memory write to be dispatched to the card
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	*/</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> t<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> prepare_write(<span style="color:#66d9ef">uint64_t</span> address, t buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">is_in_section</span>(<span style="color:#66d9ef">uint64_t</span> address, section_data_t section_data);
+</span></span></code></pre></div><p><strong>Fields</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>DWORD process_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>VMMDLL_SCATTER_HANDLE scatter_handle <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> scatters <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><p><strong>Related enums</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">section_data_t</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint64_t</span> start, end;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">uint32_t</span> characteristics;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h1 id="example">Example<a href="#example" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*&gt;</span> args <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;-device&#34;</span>, <span style="color:#e6db74">&#34;FPGA&#34;</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    c_device device <span style="color:#f92672">=</span> c_device(args);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>device.connect())
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> device.error(<span style="color:#e6db74">&#34;failed to connect to device</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;connected to device</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> processor_name <span style="color:#f92672">=</span> device.get_registry_data(<span style="color:#e6db74">&#34;HKLM</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">HARDWARE</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">DESCRIPTION</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">System</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">CentralProcessor</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">0</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">ProcessorNameString&#34;</span>, e_registry_type<span style="color:#f92672">::</span>sz).get_string();
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;processor name from registry -&gt; %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, processor_name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> users <span style="color:#f92672">=</span> device.get_users();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (users.empty())
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>error(<span style="color:#e6db74">&#34;user list was empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;user list results</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> data : users)
+</span></span><span style="display:flex;"><span>            logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, data.usz_text);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> process_list <span style="color:#f92672">=</span> device.get_process_list();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (process_list.empty())
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>error(<span style="color:#e6db74">&#34;process list was empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;process list results</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> data : process_list)
+</span></span><span style="display:flex;"><span>            logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, data.information.szNameLong);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> service_list <span style="color:#f92672">=</span> device.get_service_list();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (service_list.empty())
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>error(<span style="color:#e6db74">&#34;service list was empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;service list results</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> data : service_list)
+</span></span><span style="display:flex;"><span>            logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;%s | pid -&gt; %d | status -&gt; %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, data<span style="color:#f92672">-&gt;</span>uszDisplayName, data<span style="color:#f92672">-&gt;</span>dwPID, data<span style="color:#f92672">-&gt;</span>ServiceStatus.dwCurrentState);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    c_process process <span style="color:#f92672">=</span> device.process_from_name(<span style="color:#e6db74">&#34;notepad.exe&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (process.failed)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> device.error(<span style="color:#e6db74">&#34;failed to find notepad process</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;found notepad process</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;attempting to fix directory table base...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    dtb_status_t dtb_status <span style="color:#f92672">=</span> process.fix_directory_table_base();
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;fix attempt result returned -&gt; %s</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, dtb_status_to_string(dtb_status));
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    c_module mod <span style="color:#f92672">=</span> process.module_from_name(<span style="color:#e6db74">&#34;notepad.exe&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mod.failed)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> device.error(<span style="color:#e6db74">&#34;failed to find module</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;found module, base -&gt; 0x%llx, size -&gt; 0x%lx</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, mod.base, mod.size);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> sections <span style="color:#f92672">=</span> mod.get_sections();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (sections.empty())
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>error(<span style="color:#e6db74">&#34;section list was empty</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;section list results</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> data : sections)
+</span></span><span style="display:flex;"><span>            logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;name -&gt; %s | start -&gt; 0x%llx | end -&gt; 0x%llx | characteristics -&gt; %c%c%c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, data.name, data.start, data.end,
+</span></span><span style="display:flex;"><span>                (data.characteristics <span style="color:#f92672">&amp;</span> IMAGE_SCN_MEM_READ) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;r&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>                (data.characteristics <span style="color:#f92672">&amp;</span> IMAGE_SCN_MEM_WRITE) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;w&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;-&#39;</span>,
+</span></span><span style="display:flex;"><span>                (data.characteristics <span style="color:#f92672">&amp;</span> IMAGE_SCN_MEM_EXECUTE) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;x&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;-&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    c_memory memory <span style="color:#f92672">=</span> process.get_memory();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint64_t</span> scan_result <span style="color:#f92672">=</span> memory.find_signature(<span style="color:#e6db74">&#34;48 ? 48 ? 48&#34;</span>, mod.base, mod.base <span style="color:#f92672">+</span> mod.size);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> bytes[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>    memory.read_raw(scan_result, <span style="color:#f92672">&amp;</span>bytes);
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;signature scan result -&gt; 0x%llx | bytes -&gt; 0x%x 0x%x 0x%x</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>, scan_result, bytes[<span style="color:#ae81ff">0</span>], bytes[<span style="color:#ae81ff">1</span>], bytes[<span style="color:#ae81ff">2</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;running memory read speed test...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    c_timer timer;
+</span></span><span style="display:flex;"><span>    timer.initialize();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> amount_to_read <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xD3AD</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> amount_to_read; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">uint8_t</span> value <span style="color:#f92672">=</span> memory.read<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">uint8_t</span><span style="color:#f92672">&gt;</span>(mod.base <span style="color:#f92672">+</span> i);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;regular memory read on 0x%X bytes took -&gt; %f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, amount_to_read, timer.get_duration());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    timer.reset();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint8_t</span> callback[<span style="color:#ae81ff">0xD3AD</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    memory.initialize_scatter();
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> amount_to_read; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        memory.prepare_scatter<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">uint8_t</span><span style="color:#f92672">&gt;</span>(mod.base <span style="color:#f92672">+</span> i, <span style="color:#f92672">&amp;</span>callback[i]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    memory.dispatch_read(true);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;scatter memory read on 0x%X bytes took -&gt; %f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, amount_to_read, timer.get_duration());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    device.disconnect();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    logger<span style="color:#f92672">::</span>info(<span style="color:#e6db74">&#34;disconnected from device</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="/posts/fishing-planet-name-change-profanity-check/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Fishing Planet - Name change profanity check</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="/posts/the-cycle-frontier-shutting-down/">
+                <span class="button__text">The Cycle: Frontier - What went wrong</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a><span><a> Website idea is from AVX</a></span></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
